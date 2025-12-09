@@ -20,15 +20,14 @@
    npm run dev
    ```
 
-   The app will be available at `http://localhost:5173`
+   The app will be available at [`http://localhost:5173`](http://localhost:5173)
 
 4. **Build for production (optional)**
    ```
    npm run build
    ```
 
-5. **Enjoy the project**
-
+5. **Or you can enjoy the [`DEMO`](https://constantinehub.github.io/products-carousel/)**
 
 
 ## What was implemented
