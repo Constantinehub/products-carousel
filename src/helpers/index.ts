@@ -21,4 +21,8 @@ const convertArrayToMap = <T, K extends keyof T>(arr: T[], key?: K): Map<T[K] | 
   return map;
 };
 
-export { formatCurrency, convertArrayToMap };
+const delay = (ms = 1000) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+export { formatCurrency, convertArrayToMap, delay };

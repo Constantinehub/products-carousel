@@ -36,6 +36,7 @@ export default function ProductCart() {
     0
   );
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const isExtraDiscount = subtotal > 1000;
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setCartOpen}>
@@ -141,10 +142,22 @@ export default function ProductCart() {
         {cartItems.length > 0 && (
           <SheetFooter className="border-t bg-muted/50">
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium uppercase">Sub total</span>
-                <span className="text-lg font-bold">{formatCurrency(subtotal)}</span>
+              <div className="flex items-center justify-end gap-3">
+                <span className="text-sm font-medium uppercase mr-auto">Sub total</span>
+                <span className={twMerge('text-lg font-bold', isExtraDiscount && 'line-through')}>
+                  {formatCurrency(subtotal)}
+                </span>
+                {isExtraDiscount && (
+                  <span className="text-lg font-bold text-red-600">
+                    {formatCurrency(subtotal > 1000 ? subtotal * 0.85 : subtotal)}
+                  </span>
+                )}
               </div>
+              {isExtraDiscount && (
+                <div className="flex justify-end -mt-4">
+                  <span className="text-red-600 text-xs">Extra 15% discount</span>
+                </div>
+              )}
               <div className="flex flex-col gap-2 pt-2">
                 <Button size="lg" className="w-full">
                   Check out
